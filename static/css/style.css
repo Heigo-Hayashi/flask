@@ -1,0 +1,101 @@
+
+    /*========= レイアウトのためのCSS ===============*/
+    
+
+    
+    .btnripple2 {
+        /*波紋の基点とするためrelativeを指定*/
+        position: relative;
+        /*波紋の形状*/
+        display: inline-block;
+        background: #00e1ff;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        color: #ccc;
+        outline: none;
+        /*アニメーションの設定*/
+        transition: all .3s;
+        text-align: center;
+    }
+    
+    /*hoverした際の背景色の設定*/
+    .btnripple2:hover {
+        background: #666;
+    }
+    
+    /*波形を2つ設定*/
+    .btnripple2::after,
+    .btnripple2::before {
+        border: 1px solid #00e1ff;
+        width: 150%;
+        height: 150%;
+        border-radius: 50%;
+        /*はじめは不透明*/
+        opacity: 1;
+    }
+    .addRipple::after,
+    .addRipple::before{
+        content: '';
+        /*絶対配置で波形の位置を決める*/
+        position: absolute;
+        left: -25%;
+        top: -25%;
+        /*波形の形状*/
+        border: 1px solid #00e1ff;
+        width: 150%;
+        height: 150%;
+        border-radius: 50%;
+        /*はじめは不透明*/
+        opacity: 1;
+        /*ループするアニメーションの設定*/
+        animation: 1s circleanime linear infinite;
+    }
+    
+    /*波形の2つ目は0.5秒遅らせてアニメーション*/
+    .btnripple2::before {
+        animation-delay: .5s;
+    }
+    
+    /*波形のアニメーション*/
+    @keyframes circleanime {
+        0% {
+            transform: scale(0.68);
+        }
+        100% {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+    }
+    
+    /*中央矢印*/
+    .btnripple2 span::after {
+        content: '';
+        /*絶対配置で矢印の位置を決める*/
+        position: absolute;
+        top: 38%;
+        left: 45%;
+        /*矢印の形状*/
+        border: 14px solid transparent;
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        border-left-color: #fff;
+    }
+    
+    img {
+        max-width: 50%;
+        max-height: 50%;
+    }
+    .btnripple2 p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        /* -webkit- transform: translateY(-50%) translateX(-50%); */
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
